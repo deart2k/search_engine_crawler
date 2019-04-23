@@ -14,7 +14,7 @@ pipeline {
       agent { node ( 'master' ) }
       steps {
         checkout scm
-        sh 'docker run --rm deart/search_engine_crawler:${BRANCH_NAME} /app/test'
+        sh 'docker run --rm deart/search_engine_crawler:${BRANCH_NAME} /app/test.sh'
         }
       }
     }
