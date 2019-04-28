@@ -25,5 +25,13 @@ pipeline {
         sh 'docker push deart/search_engine_crawler:${BRANCH_NAME}'
         }
       }
+   if (${BRANCH_NAME} == 'develop') {
+   	  stage('Deploy') {
+      agent { node ( 'master' ) }
+      steps {
+         echo 'I only execute on the develop branch'
+        }
+      }
+   }
     }
   }
