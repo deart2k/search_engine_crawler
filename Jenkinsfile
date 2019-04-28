@@ -25,13 +25,11 @@ pipeline {
         sh 'docker push deart/search_engine_crawler:${BRANCH_NAME}'
         }
       }
-   if (${BRANCH_NAME} == 'develop') {
-   	  stage('Deploy') {
-      agent { node ( 'master' ) }
+   stage('Deploy') {
+      agent { node ( 'df-ubuntu18-2' ) }
+      when { branch 'master' }
       steps {
-         echo 'I only execute on the develop branch'
-        }
+      	build job: 'Deploy Search Engine'
       }
-   }
     }
   }
