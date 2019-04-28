@@ -26,8 +26,8 @@ pipeline {
         }
       }
    stage('Deploy') {
-      agent { node ( 'df-ubuntu18-2' ) }
-      when { branch 'master' }
+      agent { node ( 'master' ) }
+      when { branch 'develop' }
       steps {
       	build job: 'Deploy Search Engine'
       }
